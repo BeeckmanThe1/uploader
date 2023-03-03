@@ -1,0 +1,62 @@
+image: node:19.2
+
+definitions:
+  steps:
+    - step: &install-deps
+        name: install deps
+        script:
+          - npm ci
+    - step: &eslint
+        name: eslint
+        caches:
+          - node
+        script:
+          - npm run eslint
+    - step: &stylelint
+        name: stylelint
+        caches:
+          - node
+        script:
+          - npm run stylelint
+    - step: &typecheck
+        name: typecheck
+        caches:
+          - node
+        script:
+          - npm run typecheck
+    - step: &create-artifact
+        name: Create artifact
+        script:
+          - git archive --format=tar.gz main -o application.tar.gz
+        artifacts:
+          - application.tar.gz
+    - step: &deploy-artifact
+        name: Deploy to heroku
+        deployment: production
+        caches:
+          - node
+        script:
+          - pipe: atlassian/heroku-deploy:2.0.0
+            variables:
+              HEROKU_API_KEY: $HEROKU_API_KEY
+              HEROKU_APP_NAME: $HEROKU_APP_NAME
+              ZIP_FILE: "application.tar.gz"
+    - step: &bump-document-release
+        name: Bump version, document and publish
+        script:
+          - npm i
+          - npm run release
+          - git remote set-url origin https://bitbucket.org/ad-flumine/isomorphic-website-setup-ts.git
+pipelines:
+  default:
+    - step: *install-deps
+    - parallel:
+        - step: *eslint
+        - step: *stylelint
+        - step: *typecheck
+  branches:
+    main:
+      - step: *install-deps
+      - step: *bump-document-release
+      - step: *create-artifact
+      - step: *deploy-artifact
