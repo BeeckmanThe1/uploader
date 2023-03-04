@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(router);
 
-app.use(express.static(path.join(__dirname, './client')))
+app.use(express.static(path.join(__dirname, '../dist-client')))
 app.use(express.static(path.join(__dirname, './styles')))
 
 const uploadsDir = path.join(__dirname, './uploads')

@@ -5,8 +5,8 @@ const config = {
   ...sharedConfig,
   entry: './src/client/hydrate.tsx',
   output: {
-    filename: 'client/hydrate.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'hydrate.js',
+    path: path.resolve(__dirname, 'dist-client')
   }
 };
 

@@ -2,7 +2,7 @@ const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const config = {
+const configServer = {
     entry: ['./src/server/index.ts', './src/styles/_index.scss'],
     devtool: !isProduction && 'source-map',
     output: {
@@ -34,7 +34,7 @@ const config = {
                 use: [
                     {
                         loader: 'file-loader',
-                        options: { outputPath: 'static/', name: `[${isProduction ? 'contenthash' : 'name'}].[ext]`}
+                        options: { outputPath: 'static/', name: `[${isProduction ? 'contenthash' : 'name'}].[ext]` }
                     }
                 ]
             }
@@ -45,6 +45,14 @@ const config = {
     },
     target: 'node',
     stats: 'errors-only'
-};
+}
+const configClient = {
+    ...configServer,
+    entry: './src/client/hydrate.tsx',
+    output: {
+        filename: 'hydrate.js',
+        path: path.resolve(__dirname, 'dist-client')
+    }
+}
 
-module.exports = config;
+module.exports = [configServer, configClient]
