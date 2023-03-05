@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { Upload, Button, Space, Typography, message } from 'antd';
 
 const { Dragger } = Upload;
@@ -16,11 +16,20 @@ const Uploader = () => {
     const uploadConfig: UploadProps = {
         customRequest: ({ file, onSuccess }) => {
             uploadImg(file as RcFile)
+            // this is needed to avoid antd's component to be in control of the call being done
             onSuccess('')
         },
+        ref:fileInputRef,
         fileList: [],
         multiple: true
     };
+    const fileInputRef = useRef(null)
+
+    const handleUpload = () => {
+        // this is not the react way, but antdesign's uploader does NOT let you pass a ref for the fileInput
+        const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement
+        fileInput.click()
+    }
 
     return <div className={'iso-uploader-wrapper'}>
         <Space size={'small'} direction="vertical" className={'iso-uploader-headers'}>
@@ -37,7 +46,7 @@ const Uploader = () => {
         </Dragger>
         <Space size={'small'} direction="vertical" style={{ display: 'flex', alignItems: 'center' }}>
             <Text type="secondary">Or</Text>
-            <Button type="primary">Choose a file</Button>
+            <Button onClick={handleUpload} type="primary">Choose a file</Button>
         </Space>
     </div>
 }
