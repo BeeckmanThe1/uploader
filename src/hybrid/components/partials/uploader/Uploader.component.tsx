@@ -43,11 +43,13 @@ const Uploader = () => {
 }
 
 const LinkCopier = ({ src }: { src: string }) => {
-    const handleClick = () => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        navigator.clipboard.writeText(src)
-        message.success('Copied link')
+    const handleClick = async () => {
+        try {
+            await navigator.clipboard.writeText(src)
+            message.success('Copied link')
+        } catch(e){
+            message.success('Copying failed')
+        }
     }
 
     return <div className={'iso-link-copier'}>
