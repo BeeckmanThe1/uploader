@@ -54,7 +54,7 @@ const LinkCopier = ({ src }: { src: string }) => {
             await navigator.clipboard.writeText(src)
             message.success('Copied link')
         } catch(e){
-            message.success('Copying failed')
+            message.error('Copying failed')
         }
     }
 
