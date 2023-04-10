@@ -114,6 +114,6 @@ export const UploadManager = () => {
 
         {uploadStatus === UPLOADER_STATES.UPLOADING ? <Loader/> : null}
 
-        {uploadStatus === UPLOADER_STATES.DONE ? <UploaderDone src={uploadPreview.src || uploadPreview.preview}/> : null}
+        {uploadStatus === UPLOADER_STATES.DONE ? <UploaderDone src={uploadPreview.preview}/> : null}
     </>
 };

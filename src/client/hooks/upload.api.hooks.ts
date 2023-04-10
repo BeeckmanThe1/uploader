@@ -49,6 +49,5 @@ export const useAddUpload = () => {
             message.error(`${file?.name} file upload failed.`)
             setUploadStatus(UPLOADER_STATES.READY)
         }
-        // onSettled: () => setUploadStatus(UPLOADER_STATES.DONE)
     })
 }

@@ -1,1 +1,0 @@
-export { default as dogData } from './dog.data.json';
