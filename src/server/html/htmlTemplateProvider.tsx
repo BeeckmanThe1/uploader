@@ -1,7 +1,7 @@
 import React, { AllHTMLAttributes } from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { Homepage } from '../../hybrid/components/pages/homepage/homepage.page';
-import {QueryClientProvider, Hydrate, dehydrate, QueryClient} from '@tanstack/react-query'
+import { QueryClientProvider, Hydrate, dehydrate, QueryClient } from '@tanstack/react-query'
 
 const HtmlTags = {
     html: 'html',
@@ -9,7 +9,7 @@ const HtmlTags = {
     title: 'title',
     head: 'head',
     body: 'body',
-    script: 'script',
+    script: 'script'
 } as const
 type HtmlTag = typeof HtmlTags[keyof typeof HtmlTags]
 type HtmlTagProps = { Tag: HtmlTag, children?: React.ReactNode } & AllHTMLAttributes<HTMLElement>

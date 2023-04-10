@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Upload, Button, Space, Typography, message } from 'antd';
 
 const { Dragger } = Upload;
