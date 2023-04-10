@@ -35,9 +35,9 @@
 
 ## Overview
 
-![screenshot](https://raw.githubusercontent.com/BeeckmanThe1/uploader/57a2adabd40564c21d6309e2fc0c0ba0b9aea8d1/src/static/readme/uploader.png)
-![screenshot](https://raw.githubusercontent.com/BeeckmanThe1/uploader/57a2adabd40564c21d6309e2fc0c0ba0b9aea8d1/src/static/readme/loader.png)
-![screenshot](https://raw.githubusercontent.com/BeeckmanThe1/uploader/57a2adabd40564c21d6309e2fc0c0ba0b9aea8d1/src/static/readme/uploaded.png)
+![screenshot](https://github.com/BeeckmanThe1/uploader/blob/wrapping-up/src/static/readme/uploader.png)
+![screenshot](https://github.com/BeeckmanThe1/uploader/blob/wrapping-up/src/static/readme/loader.png)
+![screenshot](https://github.com/BeeckmanThe1/uploader/blob/wrapping-up/src/static/readme/uploaded.png)
 
 
 I tweaked the Antdesign uploader so the component was NOT responsible for making the api calls & error handling; instead we use react-query for handling syncing the application with the server.
