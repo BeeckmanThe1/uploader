@@ -47,7 +47,6 @@ const Uploader = () => {
         </Space>
     </div>
 }
-
 const LinkCopier = ({ src }: { src: string }) => {
     const handleClick = async () => {
         try {
@@ -65,7 +64,6 @@ const LinkCopier = ({ src }: { src: string }) => {
         </div>
     </div>
 }
-
 const UploaderDone = ({ src }: { src: string }) => {
     return <div className={'iso-uploader-wrapper'}>
         <Space size={'small'} direction="vertical" className={'iso-uploader-headers'}>
@@ -98,22 +96,15 @@ const Loader = () => {
 }
 
 export const UploadManager = () => {
-    const [isHydrated, setIsHydrated] = useState(false)
-    useEffect(() => setIsHydrated(true), [])
-
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const { uploadStatus, uploadPreview } = useUploaderStore((state: any) => ({
         uploadStatus: state.uploadStatus,
         uploadPreview: state.uploadPreview
     }))
-    console.log('isHydrated:', isHydrated)
-
     return <>
         {uploadStatus === UPLOADER_STATES.READY ? <Uploader/> : null}
-
         {uploadStatus === UPLOADER_STATES.UPLOADING ? <Loader/> : null}
-
         {uploadStatus === UPLOADER_STATES.DONE ? <UploaderDone src={uploadPreview.preview}/> : null}
     </>
 };
