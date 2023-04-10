@@ -15,7 +15,6 @@ const Uploader = () => {
     const { mutate: uploadImg } = useAddUpload()
     const uploadConfig: UploadProps = {
         customRequest: ({ file, onSuccess }) => {
-            console.log('FILE', file)
             uploadImg(file as RcFile)
             // this is needed to avoid antd's component to be in control of the call being done
             onSuccess('')
@@ -97,8 +96,6 @@ const Loader = () => {
 }
 
 export const UploadManager = () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     const { uploadStatus, uploadPreview } = useUploaderStore((state) => ({
         uploadStatus: state.uploadStatus,
         uploadPreview: state.uploadPreview

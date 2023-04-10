@@ -15,5 +15,7 @@ export type Preview = RcFile & {
 
 export type UploadStore = {
     uploadStatus: UploaderType,
-    uploadPreview: Preview
+    uploadPreview: Preview,
+    setUploadStatus: (_type: UploaderType) => void,
+    setUploadPreview: (_preview: Preview) => void
 }
