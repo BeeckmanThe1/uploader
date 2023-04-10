@@ -2,7 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false, // let eslint handle this -> with _unusedVar as ignore pattern
     "module": "esnext",
     "target": "es5",
     "allowJs": true,

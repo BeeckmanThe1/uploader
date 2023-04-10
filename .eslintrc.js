@@ -35,7 +35,12 @@ module.exports = {
         'no-multi-spaces': ['error'],
         'object-curly-spacing': ['error', 'always'],
         'array-bracket-spacing': ['error', 'never'],
-        'no-unused-vars': ['error', { 'vars': 'all', 'args': 'after-used', 'ignoreRestSiblings': false }],
+        'no-unused-vars': ['error', {
+            'vars': 'all', 'args': 'after-used', 'ignoreRestSiblings': false,
+            'argsIgnorePattern': '^_',
+            'varsIgnorePattern': '^_',
+            'caughtErrorsIgnorePattern': '^_'
+        }],
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/no-var-requires': 0
     }

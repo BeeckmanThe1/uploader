@@ -1,15 +1,9 @@
-import { create, State } from 'zustand'
-import { UPLOADER_STATES, UploaderType } from './uploader.models';
-import { RcFile } from 'antd/es/upload/interface';
+import { create } from 'zustand'
+import { Preview, UPLOADER_STATES, UploaderType, UploadStore } from './uploader.models';
 
-export interface UploadPreview extends RcFile {
-    src: string
-}
-export const useUploaderStore = create((set) => ({
+export const useUploaderStore = create<UploadStore>((set) => ({
     uploadStatus: UPLOADER_STATES.READY,
-    uploadPreview: {},
-    // eslint-disable-next-line no-unused-vars
-    setUploadStatus: (uploadStatus: UploaderType) => set((_state: State) => ({ uploadStatus })),
-    // eslint-disable-next-line no-unused-vars
-    setUploadPreview: (uploadPreview: UploadPreview) => set((_state: State) => ({ uploadPreview }))
+    uploadPreview: null,
+    setUploadStatus: (uploadStatus: UploaderType) => set(_state => ({ uploadStatus })),
+    setUploadPreview: (uploadPreview: Preview) => set(_state => ({ uploadPreview }))
 }))
