@@ -1,7 +1,7 @@
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import uploadService from '../../services/upload/upload.service';
 
-const addUpload = async (req: any, res: Response) => {
+const addUpload = async (req: Request, res: Response) => {
     try {
         await uploadService.uploadImg(req, res);
         res.status(200);
