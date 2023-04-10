@@ -1,11 +1,10 @@
-@import "../../../../styles/dependencies/_index.scss";
+@import '../../../../styles/dependencies/_index.scss';
 
 .iso-uploader-wrapper {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
   background: white;
   border-radius: $spacing-XXXS;
   padding: 0 $spacing-MD $spacing-MD $spacing-MD;
@@ -42,19 +41,19 @@
     background: #fafafa;
     border-radius: 8px;
     margin: $spacing-SM 0;
-
     border: 2px solid darken(#fafafa, 10%);
+
     .iso-link-flex-box {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       justify-content: center;
       padding-left: $spacing-XS;
+
       div {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-
         flex: 1 0;
       }
 

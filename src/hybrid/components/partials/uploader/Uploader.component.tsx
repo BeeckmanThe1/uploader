@@ -99,7 +99,7 @@ const Loader = () => {
 export const UploadManager = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const { uploadStatus, uploadPreview } = useUploaderStore((state: any) => ({
+    const { uploadStatus, uploadPreview } = useUploaderStore((state) => ({
         uploadStatus: state.uploadStatus,
         uploadPreview: state.uploadPreview
     }))
