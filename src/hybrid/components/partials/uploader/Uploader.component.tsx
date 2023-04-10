@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Upload, Button, Space, Typography, message } from 'antd';
 
 const { Dragger } = Upload;
@@ -15,6 +15,7 @@ const Uploader = () => {
     const { mutate: uploadImg } = useAddUpload()
     const uploadConfig: UploadProps = {
         customRequest: ({ file, onSuccess }) => {
+            console.log('FILE', file)
             uploadImg(file as RcFile)
             // this is needed to avoid antd's component to be in control of the call being done
             onSuccess('')
@@ -105,6 +106,6 @@ export const UploadManager = () => {
     return <>
         {uploadStatus === UPLOADER_STATES.READY ? <Uploader/> : null}
         {uploadStatus === UPLOADER_STATES.UPLOADING ? <Loader/> : null}
-        {uploadStatus === UPLOADER_STATES.DONE ? <UploaderDone src={uploadPreview.preview}/> : null}
+        {uploadStatus === UPLOADER_STATES.DONE ? <UploaderDone src={uploadPreview.preview || uploadPreview.src}/> : null}
     </>
 };

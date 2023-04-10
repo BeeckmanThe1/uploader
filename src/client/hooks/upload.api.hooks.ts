@@ -23,7 +23,7 @@ export const useAddUpload = () => {
 
     const upload = (file: RcFile) => {
         const formData = new FormData();
-        formData.append('file', file as RcFile);
+        formData.append('file', file);
 
         return fetch('/api/upload', {
             method: 'post',

@@ -4,11 +4,7 @@ import { Request, Response } from 'express'
 const uploadImg = async (req: Request, res: Response) => {
     try {
         const storage = multer.diskStorage({
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             destination:  (_request, _file, callback) => callback(null, './dist/uploads'),
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             filename: (_req, file: Express.Multer.File, callback: () => void) => callback(null, file.originalname)
         });
         const upload = multer({ storage }).single('file');
