@@ -1,7 +1,7 @@
-import React, { AllHTMLAttributes } from 'react';
+import React, {AllHTMLAttributes} from 'react';
 import * as ReactDOMServer from 'react-dom/server';
-import { Homepage } from '../../hybrid/components/pages/homepage/homepage.page';
-import { QueryClientProvider, Hydrate, dehydrate, QueryClient } from '@tanstack/react-query'
+import {Homepage} from '../../hybrid/components/pages/homepage/homepage.page';
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query'
 
 const HtmlTags = {
     html: 'html',
@@ -13,20 +13,14 @@ const HtmlTags = {
 } as const
 type HtmlTag = typeof HtmlTags[keyof typeof HtmlTags]
 type HtmlTagProps = { Tag: HtmlTag, children?: React.ReactNode } & AllHTMLAttributes<HTMLElement>
-const HtmlTag: React.FC<HtmlTagProps> = ({ Tag, children, ...rest }) => {
+const HtmlTag: React.FC<HtmlTagProps> = ({Tag, children, ...rest}) => {
     return <Tag {...rest}>{children}</Tag>
 }
 
-export const getBasicSkeleton = ({ queryClient }: {queryClient: QueryClient}) => {
-    // await queryClient.prefetchQuery(['posts'], getPosts)
-    const dehydratedState = dehydrate(queryClient)
-
+export const getBasicSkeleton = () => {
     const htmlVersion = '<!DOCTYPE html>'
-    const passSSRStateToClientScript = `<script>
-        window.__REACT_QUERY_STATE__ = ${JSON.stringify(dehydratedState)};
-    </script>`
-
     const fontAwesomeScript = '<script src="https://kit.fontawesome.com/c4f1fd5c3a.js" crossorigin="anonymous"></script>'
+    const queryClient = new QueryClient()
 
     const html = ReactDOMServer.renderToString(<HtmlTag Tag={HtmlTags.html} lang="en">
             <HtmlTag Tag={HtmlTags.head}>
@@ -39,11 +33,9 @@ export const getBasicSkeleton = ({ queryClient }: {queryClient: QueryClient}) =>
             </HtmlTag>
             <HtmlTag Tag={HtmlTags.body}>
                 <QueryClientProvider client={queryClient}>
-                    <Hydrate state={dehydratedState}>
-                        <div data-should-hydrate={true}>
-                            <Homepage/>
-                        </div>
-                    </Hydrate>
+                    <div data-should-hydrate={true}>
+                        <Homepage/>
+                    </div>
                 </QueryClientProvider>
                 <HtmlTag Tag={HtmlTags.script} src={'./hydrate.js'}/>
             </HtmlTag>
@@ -52,6 +44,5 @@ export const getBasicSkeleton = ({ queryClient }: {queryClient: QueryClient}) =>
 
     return `${htmlVersion}
     ${html}
-    ${passSSRStateToClientScript}
     ${fontAwesomeScript}`;
 }

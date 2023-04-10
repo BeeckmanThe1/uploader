@@ -18,8 +18,6 @@ export const useAddUpload = () => {
     const handlePreview = async (file: RcFile) => {
         const preview = await getBase64(file);
 
-        console.log('file!', file)
-
         setUploadPreview({ ...file, preview, src: `${window.location.origin}/uploads/${file.name}` })
     };
 
@@ -32,8 +30,6 @@ export const useAddUpload = () => {
             body: formData
         }).finally(() => file)
     }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
 
     return useMutation<void, unknown, RcFile>({
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
