@@ -33,9 +33,9 @@
 
 ## Overview
 
-![screenshot](https://github.com/BeeckmanThe1/uploader/blob/wrapping-up/src/static/readme/uploader.png)
-![screenshot](https://github.com/BeeckmanThe1/uploader/blob/wrapping-up/src/static/readme/loader.png)
-![screenshot](https://github.com/BeeckmanThe1/uploader/blob/wrapping-up/src/static/readme/uploaded.png)
+![screenshot](https://github.com/BeeckmanThe1/uploader/blob/main/src/static/readme/uploader.png)
+![screenshot](https://github.com/BeeckmanThe1/uploader/blob/main/src/static/readme/loader.png)
+![screenshot](https://github.com/BeeckmanThe1/uploader/blob/main/src/static/readme/uploaded.png)
 
 ### FE
 
@@ -147,7 +147,7 @@ The other two are:
 
 The choosen approach is has no actual production value as the dist/uploads folder gets deleted at every dyno restart.
 
-![screenshot](https://github.com/BeeckmanThe1/uploader/blob/wrapping-up/src/static/readme/ephemeral-file-system-explanation.png)
+![screenshot](https://github.com/BeeckmanThe1/uploader/blob/main/src/static/readme/ephemeral-file-system-explanation.png)
 
 Due to legal reasons I actually liked this. I do not want to have images a random person on the internet uploaded in my DB or bucket.
 Choosing one of the other two approaches should not be very hard though.
