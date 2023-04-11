@@ -48,7 +48,7 @@ we use react-query for handling syncing the application with the server:
 const uploadConfig: UploadProps = {
         customRequest: ({ file, onSuccess }) => {
             // our own react-query hook
-}            uploadImg(file as RcFile)
+            uploadImg(file as RcFile)
             // this is needed to avoid antd's component to be in control of the call being done
             onSuccess('')
         },
