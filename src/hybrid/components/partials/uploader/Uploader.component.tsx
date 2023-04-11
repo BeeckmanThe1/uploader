@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Upload, Button, Space, Typography, message } from 'antd';
 
 const { Dragger } = Upload;
@@ -100,9 +100,10 @@ export const UploadManager = () => {
         uploadStatus: state.uploadStatus,
         uploadPreview: state.uploadPreview
     }))
+
     return <>
         {uploadStatus === UPLOADER_STATES.READY ? <Uploader/> : null}
         {uploadStatus === UPLOADER_STATES.UPLOADING ? <Loader/> : null}
-        {uploadStatus === UPLOADER_STATES.DONE ? <UploaderDone src={uploadPreview.preview || uploadPreview.src}/> : null}
+        {uploadStatus === UPLOADER_STATES.DONE ? <UploaderDone src={uploadPreview?.preview || uploadPreview?.src}/> : null}
     </>
 };

@@ -27,12 +27,10 @@ export const useAddUpload = () => {
         formData.append('file', file);
 
         // todo can we type fetch better? if not; use axios
-        const toReturn = fetch('/api/upload', {
+        return fetch('/api/upload', {
             method: 'post',
             body: formData
         }).finally(() => file) as unknown as Promise<RcFile>
-        console.log('toreturn', toReturn)
-        return toReturn
     }, {
         onMutate: () => setUploadStatus(UPLOADER_STATES.UPLOADING),
         onSuccess: async (_result: never, file: RcFile) => {
